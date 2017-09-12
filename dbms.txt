@@ -1,0 +1,38 @@
+Create table customers(ID int,Name varchar(10),age int,address varchar(20),salary int);
+Insert into customers values(1,'vishal',25,'badlapur',20000);
+Insert into customers values(2,'pritam',26,'ambernath',25000);
+Insert into customers values(3,'rohit',27,'kalyan',30000);
+Insert into customers values(4,'kapil',28,'thane',35000);
+Insert into customers values(5,'abhay',40,'cst',40000);
+
+CREATE or REPLACE TRIGGER tr3
+	BEFORE
+	insert ON Customers
+	FOR ON Customers
+	FOR EACH ROW 
+BEGIN
+	:new.name:=upper(:new.name);
+END;
+/
+
+BEFORE INSERT ON customers
+FOR EACH ROW
+WHEN(NEW.ID>0)
+DECLARE
+	sal_diff number;
+BEGIN	
+	sal_diff:=:NEW.SALARY-:OLD.SALARY;
+dbms_output.put_line('old salary:'||:old.salary);
+dbms_output.put_line('new salary:'||:new.salary);
+dbms_output.put_line('salary difference:'||sal_diff);
+
+END;
+/
+
+
+update customers
+set salary=salary+500
+where id=4;9,'badlapur3',50000);
+insert into customers values(6,'rohit',35,'badlapur4',80000);
+
+
